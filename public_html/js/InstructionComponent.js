@@ -59,8 +59,8 @@ var InstructionComponent = React.createClass({
         }
 
         var next_style = {};
-        var accept_style = {color: "#030", backgroundColor: "#0f0", border: "1px solid #050"};
-        var decline_style = {color: "#300", backgroundColor: "#f00", border: "1px solid #500"};
+        var accept_style = {};
+        var decline_style = {};
         if(this.state.instructions.length > 0 && this.state.cur_instr >= this.state.instructions.length-1) {
             next_style.backgroundColor = "#ccc";
             next_style.border = "1px solid #777";
@@ -87,6 +87,7 @@ var InstructionComponent = React.createClass({
 
         var decline_elem = (
             <div className="instruction-button generic-button"
+                 id="decline-button"
                  onClick={this.decline} style={decline_style}>
                 <span>Decline <i className="fa fa-times" /></span>
             </div>
@@ -94,6 +95,7 @@ var InstructionComponent = React.createClass({
 
         var accept_elem = (
             <div className="instruction-button generic-button"
+                id="accept-button"
                  onClick={this.accept} style={accept_style}>
                 <span>Accept <i className="fa fa-check" /></span>
             </div>
@@ -106,7 +108,7 @@ var InstructionComponent = React.createClass({
                     {err_elem}
                     <p>{instr}</p>
                 </div>
-                <div id="instruction-buttons">
+                <div className="button-wrapper">
                      {decline_elem}
                      {accept_elem}
                      {prev_elem}

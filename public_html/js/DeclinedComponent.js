@@ -4,10 +4,10 @@ var DeclinedComponent = React.createClass({
             url: "/api/hit/abandon",
             method: "POST",
             success: function(data) {
-                window.location.replace("https://larsendt.com");
+                window.location = "https://larsendt.com";
             },
             error: function(err) {
-                window.location.replace("https://larsendt.com");
+                window.location = "https://larsendt.com";
             }
         });
     },

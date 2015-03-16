@@ -1,7 +1,7 @@
 var ExperimentComponent = React.createClass({
     getInitialState: function() {
         return {
-            instructions: "TBD",
+            exp_state: "in_instructions",
         };
     },
     submitRating: function(rating) {
@@ -9,37 +9,51 @@ var ExperimentComponent = React.createClass({
     },
     acceptInstructions: function() {
         console.log("instructions accepted");
-        this.setState({instructions: "accepted"});
+        this.setState({exp_state: "in_experiment"});
     },
     declineInstructions: function() {
         console.log("instructions declined");
-        this.setState({instructions: "declined"});
+        this.setState({exp_state: "instructions_declined"});
     },
     resetInstructions: function() {
         console.log("resetting instructions");
-        this.setState({instructions: "TBD"});
+        this.setState({exp_state: "in_instructions"});
+    },
+    finishExperiment: function() {
+        console.log("experiment finished");
+        this.setState({exp_state: "experiment_finished"});
+    },
+    submitFailed: function() {
+        console.log("experiment submit failed");
+        this.setState({exp_state: "submit_failed"});
     },
     render: function() {
-        var instr_elem = <span></span>;
-        var stim_elem = <span></span>;
-        var decline_elem = <span></span>;
+        var elem = <span></span>;
 
-        if(this.state.instructions == "TBD") {
-            instr_elem = <InstructionComponent acceptInstructions={this.acceptInstructions} 
-                                               declineInstructions={this.declineInstructions} />
+        if(this.state.exp_state == "in_instructions") {
+            elem = <InstructionComponent acceptInstructions={this.acceptInstructions} 
+                                         declineInstructions={this.declineInstructions} />
         }
-        else if(this.state.instructions == "accepted") {
-            stim_elem = <StimulusComponent submitRating={this.submitRating} />
+        else if(this.state.exp_state == "in_experiment") {
+            elem = <StimulusComponent finishExperiment={this.finishExperiment}
+                                      experimentSubmitFailed={this.submitFailed} />
         }
-        else if(this.state.instructions == "declined") {
-            decline_elem = <DeclinedComponent resetInstructions={this.resetInstructions} />;
+        else if(this.state.exp_state == "instructions_declined") {
+            elem = <DeclinedComponent resetInstructions={this.resetInstructions} />;
+        }
+        else if(this.state.exp_state == "experiment_finished") {
+            elem = <ExperimentFinishedComponent />
+        }
+        else if(this.state.exp_state == "submit_failed") {
+            elem = <div>NOOOOOOOOO</div>;
+        }
+        else {
+            elem = <div>WUT: {this.state.exp_state}</div>;
         }
 
         return (
             <div id="experiment-wrapper">
-                {instr_elem}
-                {stim_elem}
-                {decline_elem}
+                {elem}
             </div>
         );
     }
