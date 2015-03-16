@@ -10,7 +10,6 @@ body {
 }
 
 #stimulus-rating {
-    font-size: 18pt;
 }
 
 #stimulus-word {
@@ -23,14 +22,9 @@ body {
 }
 
 .rating-button {
-    display: inline-block;
-    padding: 5px;
-    width: 35px;
-    margin: 2px;
+    font-size: 16pt;
     background-color: #eee;
     border: 1px solid #aaa;
-    border-radius: 3px;
-    cursor: pointer;
 }
 
 .rating-button:hover {
@@ -49,7 +43,7 @@ body {
 }
 
 .instruction-text {
-    padding: 25px;
+    padding: 50px;
     text-align: justify;
     font-size: 18pt;
     line-height: 1.5;
@@ -60,21 +54,20 @@ body {
 }
 
 .instruction-button {
+    background-color: #27f;
+    color: #003;
+    border: 1px solid #009;
+}
+
+.generic-button {
     text-align: center;
     display: inline-block;
     padding: 5px;
     padding-left: 15px;
     padding-right: 15px;
     margin: 5px;
-    background-color: #27f;
-    color: #003;
-    border: 1px solid #009;
     border-radius: 3px;
-    font-size: 24pt;
     cursor: pointer;
-}
-
-.generic-button {
     -webkit-touch-callout: none;
     -webkit-user-select: none;
     -khtml-user-select: none;
@@ -97,4 +90,23 @@ body {
     padding-right: 15px;
     margin: 5px;
     font-size: 18pt;
+}
+
+#experiment-declined {
+}
+
+#decline-buttons {
+    text-align: right;
+}
+
+#return-to-turk {
+    color: #400;
+    background-color: #f00;
+    border: 1px solid #600;
+}
+
+#reset-instructions {
+    background-color: #27f;
+    color: #003;
+    border: 1px solid #009;
 }

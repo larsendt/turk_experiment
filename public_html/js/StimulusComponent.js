@@ -12,16 +12,16 @@ var StimulusComponent = React.createClass({
                 <div id="stimulus-word">Potato</div>
                 <div id="stimulus-rating">
                     <div className="rating-label">Least Similar</div>
-                    <div className="rating-button generic-button" onClick={this.submitRating}>1</div>
-                    <div className="rating-button generic-button" onClick={this.submitRating}>2</div>
-                    <div className="rating-button generic-button" onClick={this.submitRating}>3</div>
-                    <div className="rating-button generic-button" onClick={this.submitRating}>4</div>
-                    <div className="rating-button generic-button" onClick={this.submitRating}>5</div>
-                    <div className="rating-button generic-button" onClick={this.submitRating}>6</div>
-                    <div className="rating-button generic-button" onClick={this.submitRating}>7</div>
-                    <div className="rating-button generic-button" onClick={this.submitRating}>8</div>
-                    <div className="rating-button generic-button" onClick={this.submitRating}>9</div>
-                    <div className="rating-button generic-button" onClick={this.submitRating}>10</div>
+                    <div className="generic-button rating-button" onClick={this.submitRating}>1</div>
+                    <div className="generic-button rating-button" onClick={this.submitRating}>2</div>
+                    <div className="generic-button rating-button" onClick={this.submitRating}>3</div>
+                    <div className="generic-button rating-button" onClick={this.submitRating}>4</div>
+                    <div className="generic-button rating-button" onClick={this.submitRating}>5</div>
+                    <div className="generic-button rating-button" onClick={this.submitRating}>6</div>
+                    <div className="generic-button rating-button" onClick={this.submitRating}>7</div>
+                    <div className="generic-button rating-button" onClick={this.submitRating}>8</div>
+                    <div className="generic-button rating-button" onClick={this.submitRating}>9</div>
+                    <div className="generic-button rating-button" onClick={this.submitRating}>10</div>
                     <div className="rating-label">Most Similar</div>
                 </div>
             </div>
