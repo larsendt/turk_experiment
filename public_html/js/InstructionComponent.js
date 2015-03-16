@@ -46,9 +46,13 @@ var InstructionComponent = React.createClass({
             err_elem = <div className="error">{this.state.error}</div>;
         }
 
-        var instr = "";
+        var instr_elems = [];
         if(this.state.instructions.length > 0) {
             instr = this.state.instructions[this.state.cur_instr];
+            lines = instr.split("\n\n");
+            for(var i in lines) {
+                instr_elems.push(<p key={i}>{lines[i]}</p>);
+            }
         }
 
         var prev_style = {};
@@ -101,12 +105,14 @@ var InstructionComponent = React.createClass({
             </div>
         );
 
+        console.log(instr_elems);
+
         return (
             <div className="instruction-wrapper">
                 <div className="instruction-text">
                     <img id="logo" src="img/logo.png" />
                     {err_elem}
-                    <p>{instr}</p>
+                    {instr_elems}
                 </div>
                 <div className="button-wrapper">
                      {decline_elem}
