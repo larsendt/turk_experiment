@@ -1,0 +1,83 @@
+body {
+    font-family: sans-serif;
+    margin: 0px;
+}
+
+#main-component {
+    width: 800px;
+    margin: auto;
+    text-align: center;
+}
+
+#stimulus-rating {
+    font-size: 18pt;
+}
+
+#stimulus-word {
+    font-size: 48pt;
+    padding: 25px;
+    margin: 25px;
+    background-color: #eee;
+    border: 1px solid #aaa;
+    border-radius: 5px;
+}
+
+.rating-button {
+    display: inline-block;
+    padding: 5px;
+    width: 35px;
+    margin: 2px;
+    background-color: #eee;
+    border: 1px solid #aaa;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.rating-button:hover {
+    background-color: #2f2;
+}
+
+.rating-label {
+    font-size: 12pt;
+    color: #222;
+    display: inline-block;
+    padding: 5px;
+}
+
+.instruction-wrapper {
+
+}
+
+.instruction-text {
+    padding: 25px;
+    text-align: justify;
+    font-size: 18pt;
+    line-height: 1.5;
+}
+
+#instruction-button {
+    display: inline-block;
+    padding: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin: 5px;
+    background-color: #27f;
+    color: #003;
+    border: 1px solid #009;
+    border-radius: 3px;
+    font-size: 24pt;
+    cursor: pointer;
+}
+
+.generic-button {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.disabled {
+    background-color: #999;
+}
