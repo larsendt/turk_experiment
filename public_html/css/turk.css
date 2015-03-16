@@ -157,3 +157,9 @@ body {
 #finish-experiment-button:hover {
     background-color: #49f;
 }
+
+pre {
+    font-size: inherit;
+    font-family: inherit;
+    text-align: justify;
+}

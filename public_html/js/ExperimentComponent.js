@@ -1,7 +1,7 @@
 var ExperimentComponent = React.createClass({
     getInitialState: function() {
         return {
-            exp_state: "in_experiment",
+            exp_state: "in_instructions",
         };
     },
     submitRating: function(rating) {
@@ -45,10 +45,11 @@ var ExperimentComponent = React.createClass({
             elem = <ExperimentFinishedComponent />
         }
         else if(this.state.exp_state == "submit_failed") {
-            elem = <div>NOOOOOOOOO</div>;
+            console.error("Failed to submit ratings :(");
+            elem = <ExperimentFinishedComponent />
         }
         else {
-            elem = <div>WUT: {this.state.exp_state}</div>;
+            elem = <div>Unexpected app state: {this.state.exp_state}</div>;
         }
 
         return (

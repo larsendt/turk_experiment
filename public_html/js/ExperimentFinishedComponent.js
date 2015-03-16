@@ -6,7 +6,8 @@ var ExperimentFinishedComponent = React.createClass({
         return (
             <div id="experiment-finished">
                 <div className="instruction-text">
-                    Thanks for doing this HIT!
+                    Thanks for doing this HIT! Click the button below
+                    to return to Amazon.
                 </div>
                 <div className="button-wrapper">
                     <div id="finish-experiment-button" 
