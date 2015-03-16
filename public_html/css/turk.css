@@ -55,7 +55,12 @@ body {
     line-height: 1.5;
 }
 
-#instruction-button {
+#instruction-buttons {
+    text-align: right;
+}
+
+.instruction-button {
+    text-align: center;
     display: inline-block;
     padding: 5px;
     padding-left: 15px;
@@ -80,4 +85,16 @@ body {
 
 .disabled {
     background-color: #999;
+}
+
+.error {
+    color: #400;
+    background-color: #f00;
+    border: 1px solid #500;
+    border-radius: 5px;
+    padding: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin: 5px;
+    font-size: 18pt;
 }
