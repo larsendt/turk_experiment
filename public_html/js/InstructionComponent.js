@@ -33,11 +33,11 @@ var InstructionComponent = React.createClass({
         event.preventDefault();
     },
     accept: function(event) {
-        this.props.acceptAgreement();
+        this.props.acceptInstructions();
         event.preventDefault();
     },
     decline: function(event) {
-        this.props.declineAgreement();
+        this.props.declineInstructions();
         event.preventDefault();
     },
     render: function() {
