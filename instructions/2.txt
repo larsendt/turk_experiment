@@ -1,0 +1,6 @@
+The whole experiment shouldn't take more than 2-3 minutes. 
+Please complete the entire HIT in one sitting, without 
+doing anything else!
+
+If you tab away from the HIT, the session will end and the 
+HIT will be marked as incomplete.

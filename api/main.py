@@ -3,11 +3,13 @@
 from flask import Flask, Response, request
 from flup.server.fcgi import WSGIServer
 from functools import wraps
+import sys
 import json
 import words
+import instructions
 
 app = Flask(__name__)
-app.debug = False 
+app.debug = True
 
 def json_response(func):
     @wraps(func)
@@ -23,17 +25,20 @@ def json_response(func):
 @app.route("/api/instructions")
 @json_response
 def get_instructions():
-    return ["Blah blah blah one", "Blah blah blah two"], 200
+    ins = instructions.get_instructions()
+    print >>sys.stderr, ins
+    return ins, 200
 
 @app.route("/api/words")
 @json_response
-def get_alarms():
+def get_words():
     wordlist = words.get_word_blocks()
     return wordlist, 200
 
 @app.route("/api/words/submit_response", methods=["POST"])
 @json_response
-def create_alarm():
+def submit_response():
+    print >>sys.stderr, request.form
     return "ok", 200
 
 if __name__ == "__main__":

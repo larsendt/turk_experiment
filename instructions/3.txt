@@ -1,0 +1,4 @@
+The goal of this hit is to judge a given word's similarity 
+to English on a 1 to 10 scale (1 being least similar, 10 
+being most similar). For example, you might rate the word 
+'mave' as a 9, and the word 'jrckl' as a 2.
