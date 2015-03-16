@@ -7,6 +7,7 @@ var StimulusComponent = React.createClass({
             rating_blocks: {},
             complete: false,
             error: null,
+            remaining: 0,
         };
     },
     componentWillMount: function() {
@@ -15,7 +16,14 @@ var StimulusComponent = React.createClass({
             dataType: "json",
             success: function(data) {
                 console.log(data);
-                this.setState({stim_blocks: data});
+                var count = 0;
+                for(key in data) {
+                    for(i in data[key]) {
+                        count += 1;
+                    }
+                }
+
+                this.setState({stim_blocks: data, remaining: count});
             }.bind(this),
             error: function(err) {
                 this.setState({error: "Failed to fetch words!"});
@@ -23,12 +31,13 @@ var StimulusComponent = React.createClass({
         });
     },
     addRating: function(event) {
-        var word = this.props.word;
+        var word = this.state.stim_blocks[this.state.cur_stim][this.state.stim_idx];
         var rating = $(event.target).text();
         var time = new Date().getTime();
         var obj = {word: word, rating: rating, time: time};
         
         var rating_blocks = this.state.rating_blocks;
+        var cur_stim = this.state.cur_stim;
         if(!(cur_stim in rating_blocks)) {
             rating_blocks[cur_stim] = [];
         }
@@ -56,7 +65,7 @@ var StimulusComponent = React.createClass({
                 cur_stim = "block5";
             }
             else if(cur_stim == "block5") {
-                this.submitRatings(this.state.ratingBlocks);
+                this.submitRatings(this.state.rating_blocks);
                 this.setState({complete: true});
                 return;
             }
@@ -68,14 +77,16 @@ var StimulusComponent = React.createClass({
 
         this.setState({rating_blocks:rating_blocks, 
                        cur_stim:cur_stim,
-                       stim_idx:stim_idx});
+                       stim_idx:stim_idx,
+                       remaining: this.state.remaining-1});
     },
     submitRatings: function(ratings) {
+        console.log(ratings);
+        var data = {data: JSON.stringify(ratings)};
         $.ajax({
             url: "/api/words/submit_response",
             method: "POST",
-            dataType: "JSON",
-            data: ratings,
+            data: data,
             success: function(data) {
                 this.props.finishExperiment();
             }.bind(this),
@@ -89,8 +100,18 @@ var StimulusComponent = React.createClass({
         if(this.state.stim_blocks[this.state.cur_stim]) {
             word = this.state.stim_blocks[this.state.cur_stim][this.state.stim_idx];
         }
+
+        var remaining = this.state.remaining;
+        if(remaining == 1) {
+            remaining = "Last one!";
+        }
+        else {
+            remaining = remaining + " remaining";
+        }
+
         return (
             <div id="stimulus-wrapper">
+                <div className="prompt-text">How similar is this word to English?</div>
                 <div id="stimulus-word">{word}</div>
                 <div id="stimulus-rating">
                     <div className="rating-label">Least Similar</div>
@@ -106,6 +127,7 @@ var StimulusComponent = React.createClass({
                     <div className="generic-button rating-button" onClick={this.addRating}>10</div>
                     <div className="rating-label">Most Similar</div>
                 </div>
+                <div id="stimulus-remaining">{remaining}</div>
             </div>
         );
     }

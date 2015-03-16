@@ -12,6 +12,18 @@ body {
 #stimulus-rating {
 }
 
+#stimulus-remaining {
+    text-align: right;
+    color: #777;
+    padding: 25px;
+}
+
+.prompt-text {
+    padding: 25px;
+    padding-bottom: 0px;
+    font-size: 18pt;
+}
+
 #stimulus-word {
     font-size: 48pt;
     padding: 25px;

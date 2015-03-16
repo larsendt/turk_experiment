@@ -1,7 +1,7 @@
 var ExperimentComponent = React.createClass({
     getInitialState: function() {
         return {
-            exp_state: "in_instructions",
+            exp_state: "in_experiment",
         };
     },
     submitRating: function(rating) {
