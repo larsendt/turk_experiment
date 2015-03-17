@@ -48,7 +48,7 @@ var ExperimentComponent = React.createClass({
             var blur_times = this.state.blur_times;
             blur_times.push(diff);
             this.setState({blur_times: blur_times});
-            setTimeout(this.unblur, 3000);
+            setTimeout(this.unblur, 5000);
             console.log("user was blurred for " + diff + " seconds");
         }
     },

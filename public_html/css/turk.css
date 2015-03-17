@@ -35,12 +35,22 @@ body {
 
 .rating-button {
     font-size: 16pt;
+    font-family: monospace;
     background-color: #eee;
     border: 1px solid #aaa;
 }
 
 .rating-button:hover {
     background-color: #2f2;
+}
+
+.rating-disabled {
+    color: #ddd;
+    border: 1px solid #e5e5e5;
+}
+
+.rating-disabled:hover {
+    background-color: #eee;
 }
 
 .rating-label {
@@ -162,4 +172,12 @@ pre {
     font-size: inherit;
     font-family: inherit;
     text-align: justify;
+}
+
+#blur-warning {
+    background-color: #f22;
+    border: 1px solid #300;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px;
 }

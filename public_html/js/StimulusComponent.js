@@ -1,13 +1,16 @@
+TRANSITION_SPEED = 1;
+
 var StimulusComponent = React.createClass({
     getInitialState: function() {
         return {
             stim_blocks: {},
-            cur_stim: "warmup",
+            stim_block: "warmup",
             stim_idx: 0,
             rating_blocks: {},
             complete: false,
             error: null,
             remaining: 0,
+            transition: false,
         };
     },
     componentWillMount: function() {
@@ -31,40 +34,44 @@ var StimulusComponent = React.createClass({
         });
     },
     addRating: function(event) {
-        var word = this.state.stim_blocks[this.state.cur_stim][this.state.stim_idx];
+        if(this.state.transition) {
+            return;
+        }
+
+        var word = this.state.stim_blocks[this.state.stim_block][this.state.stim_idx];
         var rating = $(event.target).text();
         var time = new Date().getTime();
         var obj = {word: word, rating: rating, time: time};
         
         var rating_blocks = this.state.rating_blocks;
-        var cur_stim = this.state.cur_stim;
-        if(!(cur_stim in rating_blocks)) {
-            rating_blocks[cur_stim] = [];
+        var stim_block = this.state.stim_block;
+        if(!(stim_block in rating_blocks)) {
+            rating_blocks[stim_block] = [];
         }
 
-        rating_blocks[cur_stim].push(obj);
+        rating_blocks[stim_block].push(obj);
         console.log(rating_blocks);
 
-        var cur_stim = this.state.cur_stim;
+        var stim_block = this.state.stim_block;
         var stim_idx = this.state.stim_idx + 1;
-        if(stim_idx >= this.state.stim_blocks[cur_stim].length) {
+        if(stim_idx >= this.state.stim_blocks[stim_block].length) {
             stim_idx = 0;
-            if(cur_stim == "warmup") {
-                cur_stim = "block1";
+            if(stim_block == "warmup") {
+                stim_block = "block1";
             }
-            else if(cur_stim == "block1") {
-                cur_stim = "block2";
+            else if(stim_block == "block1") {
+                stim_block = "block2";
             }
-            else if(cur_stim == "block2") {
-                cur_stim = "block3";
+            else if(stim_block == "block2") {
+                stim_block = "block3";
             }
-            else if(cur_stim == "block3") {
-                cur_stim = "block4";
+            else if(stim_block == "block3") {
+                stim_block = "block4";
             }
-            else if(cur_stim == "block4") {
-                cur_stim = "block5";
+            else if(stim_block == "block4") {
+                stim_block = "block5";
             }
-            else if(cur_stim == "block5") {
+            else if(stim_block == "block5") {
                 this.submitRatings(this.state.rating_blocks);
                 this.setState({complete: true});
                 return;
@@ -76,9 +83,15 @@ var StimulusComponent = React.createClass({
         }
 
         this.setState({rating_blocks:rating_blocks, 
-                       cur_stim:cur_stim,
-                       stim_idx:stim_idx,
-                       remaining: this.state.remaining-1});
+                       remaining: this.state.remaining-1,
+                       transition: true,
+                       stim_idx: stim_idx,
+                       stim_block: stim_block});
+
+        setTimeout(this.finishTransition, TRANSITION_SPEED);
+    },
+    finishTransition: function() {
+        this.setState({transition: false});
     },
     submitRatings: function(ratings) {
         console.log(ratings);
@@ -99,8 +112,8 @@ var StimulusComponent = React.createClass({
     },
     render: function() {
         var word = "";
-        if(this.state.stim_blocks[this.state.cur_stim]) {
-            word = this.state.stim_blocks[this.state.cur_stim][this.state.stim_idx];
+        if(this.state.stim_blocks[this.state.stim_block]) {
+            word = this.state.stim_blocks[this.state.stim_block][this.state.stim_idx];
         }
 
         var remaining = this.state.remaining;
@@ -110,6 +123,17 @@ var StimulusComponent = React.createClass({
         else {
             remaining = remaining + " remaining";
         }
+        
+        var buttons = [];
+        for(var i = 1; i <= 10; i++) {
+            var className = "generic-button rating-button";
+            if(this.state.transition) {
+                className += " rating-disabled";
+            }
+            buttons.push(<div className={className}
+                              onClick={this.addRating}
+                              key={i}>{i}</div>);
+        }
 
         return (
             <div id="stimulus-wrapper">
@@ -117,16 +141,7 @@ var StimulusComponent = React.createClass({
                 <div id="stimulus-word">{word}</div>
                 <div id="stimulus-rating">
                     <div className="rating-label">Least Similar</div>
-                    <div className="generic-button rating-button" onClick={this.addRating}>1</div>
-                    <div className="generic-button rating-button" onClick={this.addRating}>2</div>
-                    <div className="generic-button rating-button" onClick={this.addRating}>3</div>
-                    <div className="generic-button rating-button" onClick={this.addRating}>4</div>
-                    <div className="generic-button rating-button" onClick={this.addRating}>5</div>
-                    <div className="generic-button rating-button" onClick={this.addRating}>6</div>
-                    <div className="generic-button rating-button" onClick={this.addRating}>7</div>
-                    <div className="generic-button rating-button" onClick={this.addRating}>8</div>
-                    <div className="generic-button rating-button" onClick={this.addRating}>9</div>
-                    <div className="generic-button rating-button" onClick={this.addRating}>10</div>
+                    {buttons}
                     <div className="rating-label">Most Similar</div>
                 </div>
                 <div id="stimulus-remaining">{remaining}</div>
