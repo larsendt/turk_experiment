@@ -1,4 +1,4 @@
-TRANSITION_SPEED = 1;
+TRANSITION_SPEED = 500;
 
 var StimulusComponent = React.createClass({
     getInitialState: function() {
