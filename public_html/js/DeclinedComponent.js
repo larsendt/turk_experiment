@@ -19,7 +19,7 @@ var DeclinedComponent = React.createClass({
                     this HIT! 
                 </div>
 
-                <div id="deline-buttons">
+                <div className="button-wrapper">
                     <div id="return-to-turk" className="generic-button"
                          onClick={this.goToAmazon} >
                         Return to Amazon

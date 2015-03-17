@@ -105,8 +105,6 @@ var InstructionComponent = React.createClass({
             </div>
         );
 
-        console.log(instr_elems);
-
         return (
             <div className="instruction-wrapper">
                 <div className="instruction-text">

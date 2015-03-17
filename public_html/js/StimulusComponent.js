@@ -82,7 +82,9 @@ var StimulusComponent = React.createClass({
     },
     submitRatings: function(ratings) {
         console.log(ratings);
-        var data = {data: JSON.stringify(ratings)};
+        var obj = {ratings: ratings, blur_times: this.props.blurTimes};
+        console.log(obj);
+        var data = {data: JSON.stringify(obj)};
         $.ajax({
             url: "/api/words/submit_response",
             method: "POST",
