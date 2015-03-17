@@ -1,0 +1,9 @@
+#finish-experiment-button {
+    background-color: #27f;
+    color: #003;
+    border: 1px solid #009;
+}
+
+#finish-experiment-button:hover {
+    background-color: #49f;
+}

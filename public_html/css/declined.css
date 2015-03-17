@@ -1,0 +1,19 @@
+#return-to-turk {
+    color: #400;
+    background-color: #f00;
+    border: 1px solid #600;
+}
+
+#return-to-turk:hover {
+    background-color: #f44;
+}
+
+#reset-instructions {
+    background-color: #27f;
+    color: #003;
+    border: 1px solid #009;
+}
+
+#reset-instructions:hover {
+    background-color: #49f;
+}

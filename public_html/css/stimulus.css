@@ -1,0 +1,58 @@
+#stimulus-rating {
+}
+
+#stimulus-remaining {
+    text-align: right;
+    color: #777;
+    padding: 25px;
+}
+
+.prompt-text {
+    padding: 25px;
+    padding-bottom: 0px;
+    font-size: 18pt;
+}
+
+#stimulus-word {
+    font-size: 48pt;
+    padding: 25px;
+    margin: 25px;
+    background-color: #eee;
+    border: 1px solid #aaa;
+    border-radius: 5px;
+}
+
+.rating-button {
+    font-size: 16pt;
+    font-family: monospace;
+    background-color: #eee;
+    border: 1px solid #aaa;
+}
+
+.rating-button:hover {
+    background-color: #2f2;
+}
+
+.rating-disabled {
+    color: #ddd;
+    border: 1px solid #e5e5e5;
+}
+
+.rating-disabled:hover {
+    background-color: #eee;
+}
+
+.rating-label {
+    font-size: 12pt;
+    color: #222;
+    display: inline-block;
+    padding: 5px;
+}
+
+#blur-warning {
+    background-color: #f22;
+    border: 1px solid #300;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px;
+}

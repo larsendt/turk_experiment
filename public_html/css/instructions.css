@@ -1,0 +1,40 @@
+.instruction-wrapper {
+
+}
+
+.instruction-text {
+    padding: 50px;
+    text-align: justify;
+    font-size: 18pt;
+    line-height: 1.5;
+}
+
+.instruction-button {
+    background-color: #27f;
+    color: #003;
+    border: 1px solid #009;
+}
+
+.instruction-button:hover {
+    background-color: #49f;
+}
+
+#accept-button {
+    background-color: #0f0;
+    color: #030;
+    border: 1px solid #060;
+}
+
+#accept-button:hover {
+    background-color: #4f4;
+}
+
+#decline-button {
+    background-color: #f00;
+    color: #300;
+    border: 1px solid #600;
+}
+
+#decline-button:hover {
+    background-color: #f44;
+}
